@@ -23,7 +23,7 @@
 	@show
 	@yield('content')
 	<!-- Scripts -->
-	<script src="{{ asset('/js/vendor.js') }}"></script>
+	<script src="{{ asset('/js/vendor/vendor.js') }}"></script>
 	<script src="{{ asset('/js/main.js') }}"></script>
 	@yield('scripts')
 	@yield('extras')

@@ -18,5 +18,5 @@ elixir(function(mix) {
     ], "public/js/main.js");
     mix.scripts([
         "vendor/jquery.js"
-    ], "public/js/vendor.js");
+    ], "public/js/vendor/vendor.js");
 });
