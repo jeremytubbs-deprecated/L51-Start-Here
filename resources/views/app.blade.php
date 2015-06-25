@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-@section('htmlTag')
 <html lang="en">
-@show
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,7 +7,7 @@
 	<meta name="google-site-verification" content="" />
 	<title></title>
 
-	<link href="{{ asset('/css/main.css') }}" rel="stylesheet">
+	<link href="{{ asset('/css/app.css') }}" rel="stylesheet">
 
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -19,16 +17,16 @@
 	<![endif]-->
 </head>
 
-@section('bodyTag')
 <body>
-@show
 	@section('nav')
 		@include('partials.nav')
 	@show
 	@yield('content')
-
 	<!-- Scripts -->
 	<script src="{{ asset('/js/vendor.js') }}"></script>
+	<script src="{{ asset('/js/main.js') }}"></script>
+	@yield('scripts')
+	@yield('extras')
 	<script>
 		(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
 		(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

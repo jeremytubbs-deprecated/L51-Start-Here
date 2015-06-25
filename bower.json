@@ -1,0 +1,20 @@
+{
+  "name": "Laravel 5.1 Starter",
+  "version": "",
+  "authors": [
+    "Jeremy Tubbs"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "public/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "neat": "~1.7.2",
+    "normalize.scss": "~3.0.2+normalize.3.0.2"
+  }
+}

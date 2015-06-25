@@ -1,5 +1,7 @@
 @extends('app')
 
 @section('content')
-hello
+	<main class="container">
+		Hello
+	</main>
 @endsection

@@ -28,5 +28,5 @@ Route::post('password/reset/{token}', 'Auth\PasswordController@postReset');
 // admin pages
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function()
 {
-	Route::get('/', ['as' => 'admin.home', 'uses' => 'AdminController@home']);
+	Route::get('/', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@getDashboard']);
 });
