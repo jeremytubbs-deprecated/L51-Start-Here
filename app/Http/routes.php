@@ -12,7 +12,10 @@
 */
 
 // homepage
-Route::get('/', ['as' => 'home', 'uses' => 'HomeController@index']);
+Route::get('/', ['as' => 'home', 'uses' => 'PagesController@getHome']);
+
+// contact page
+Route::get('contact', ['as' => 'contact', 'uses' => 'ContactController@getContact']);
 
 // routes for auth
 Route::get('register', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@getRegister']);
@@ -28,5 +31,10 @@ Route::post('password/reset/{token}', 'Auth\PasswordController@postReset');
 // admin pages
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function()
 {
-	Route::get('/', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@getDashboard']);
+    Route::get('/', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@getDashboard']);
+    Route::resource('posts', 'Blog\PostsController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
 });
+
+// blog pages
+Route::get(config('blog.base_uri'), ['as' => 'blog.index', 'uses' => 'Blog\PostsController@index']);
+Route::get(config('blog.base_uri').'/{slug}', ['as' => 'blog.show', 'uses' => 'Blog\PostsController@show']);

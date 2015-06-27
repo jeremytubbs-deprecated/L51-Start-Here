@@ -15,6 +15,11 @@
   ],
   "dependencies": {
     "neat": "~1.7.2",
-    "normalize.scss": "~3.0.2+normalize.3.0.2"
+    "normalize.scss": "~3.0.2+normalize.3.0.2",
+    "mirrormark": "~1.0.1",
+    "codemirror": "~5.4.0",
+    "lodash": "~3.9.3",
+    "vue": "~0.12.4",
+    "jengine-jqlite": "~0.2.2"
   }
 }
