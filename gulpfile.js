@@ -12,11 +12,25 @@ var elixir = require('laravel-elixir');
  */
 
 elixir(function(mix) {
-    mix.sass('main.scss');
+    mix.sass("main.scss");
+    mix.styles([
+        "vendor/font-awesome.css",
+        "vendor/codemirror.css",
+        "vendor/mirrormark.css"
+    ], "public/css/vendor/admin.css");
     mix.scripts([
         "burger.js"
     ], "public/js/main.js");
     mix.scripts([
         "vendor/jquery.js"
     ], "public/js/vendor/vendor.js");
+    mix.scripts([
+        "admin/main.js",
+    ], "public/js/admin.js");
+    mix.scripts([
+        "vendor/admin/codemirror/codemirror.js",
+        "vendor/admin/codemirror/addon/continuelist.js",
+        "vendor/admin/codemirror/mode/markdown.js",
+        "vendor/admin/marked.js"
+    ], "public/js/vendor/admin.js");
 });

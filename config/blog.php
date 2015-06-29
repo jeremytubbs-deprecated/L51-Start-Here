@@ -3,6 +3,6 @@
 return [
 
     'base_uri' => 'posts',
-    'filter_uri' => 'category'
+    'filter_uri' => 'categories'
 
 ];

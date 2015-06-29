@@ -3,7 +3,7 @@
 @section('content')
 <main class="container">
     @include("partials.errors")
-    <form method="POST" action="/register">
+    <form method="POST" action="/auth/register">
         {!! csrf_field() !!}
 
         <div class="col-md-6">

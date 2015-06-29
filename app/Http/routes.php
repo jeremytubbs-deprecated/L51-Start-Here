@@ -18,11 +18,11 @@ Route::get('/', ['as' => 'home', 'uses' => 'PagesController@getHome']);
 Route::get('contact', ['as' => 'contact', 'uses' => 'ContactController@getContact']);
 
 // routes for auth
-Route::get('register', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@getRegister']);
-Route::post('register', 'Auth\AuthController@postRegister');
-Route::get('login', ['as' => 'auth.login', 'uses' => 'Auth\AuthController@getLogin']);
-Route::post('login', 'Auth\AuthController@postLogin');
-Route::get('logout', ['as' => 'auth.logout', 'uses' => 'Auth\AuthController@getLogout']);
+Route::get('auth/register', ['as' => 'auth.register', 'uses' => 'Auth\AuthController@getRegister']);
+Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::get('auth/login', ['as' => 'auth.login', 'uses' => 'Auth\AuthController@getLogin']);
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', ['as' => 'auth.logout', 'uses' => 'Auth\AuthController@getLogout']);
 Route::get('password/forgot', ['as' => 'auth.forgot', 'uses' => 'Auth\PasswordController@getEmail']);
 Route::post('password/forgot', 'Auth\PasswordController@postEmail');
 Route::get('password/reset/{token}', ['as' => 'auth.reset', 'uses' => 'Auth\PasswordController@getReset']);
@@ -32,9 +32,19 @@ Route::post('password/reset/{token}', 'Auth\PasswordController@postReset');
 Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function()
 {
     Route::get('/', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@getDashboard']);
-    Route::resource('posts', 'Blog\PostsController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    // blog crud
+    Route::resource(config('blog.base_uri'), 'Admin\Blog\PostsController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
 });
 
 // blog pages
-Route::get(config('blog.base_uri'), ['as' => 'blog.index', 'uses' => 'Blog\PostsController@index']);
-Route::get(config('blog.base_uri').'/{slug}', ['as' => 'blog.show', 'uses' => 'Blog\PostsController@show']);
+Route::get(config('blog.base_uri'), ['as' => 'blog.getPosts', 'uses' => 'Blog\PostsController@getPosts']);
+
+Route::get(config('blog.base_uri').'/{year}',
+	['as' => 'blog.getPostsByYear', 'uses' => 'Blog\PostsController@getPostsByYear']
+)->where('year', '(?:19|20)\d{2}');
+
+Route::get(config('blog.base_uri').'/{year}/{month}',
+	['as' => 'blog.getPostsByMonth', 'uses' => 'Blog\PostsController@getPostsByMonth']
+)->where(['year' => '(?:19|20)\d{2}', 'month' => '1[0-2]|0[1-9]']);
+
+Route::get(config('blog.base_uri').'/{post}', ['as' => 'blog.show', 'uses' => 'Blog\PostsController@showPost']);
