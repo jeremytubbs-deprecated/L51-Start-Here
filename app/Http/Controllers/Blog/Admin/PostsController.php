@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Category;
+use App\Post;
+
 class PostsController extends Controller
 {
 
@@ -17,7 +20,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('blog.admin.create');
+        $categories = Category::lists('name', 'id');
+        return view('blog.admin.create', compact('categories'));
     }
 
     /**
@@ -25,9 +29,18 @@ class PostsController extends Controller
      *
      * @return Response
      */
-    public function store()
+    public function store(Request $request)
     {
-        //
+        // create new post
+        $post = new Post();
+        $post->user_id = \Auth::user()->id;
+        $post->slug = $request->get('title');
+        $post->html = $request->get('markdown');
+        $post->fill($request->all());
+        $post->featured = $request->has('featured') ? 1 : 0;
+        $post->save();
+
+        return redirect()->to('admin');
     }
 
     /**
@@ -36,9 +49,10 @@ class PostsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $categories = Category::lists('name', 'id');
+        return view('blog.admin.edit', compact('post', 'categories'));
     }
 
     /**
@@ -47,9 +61,16 @@ class PostsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function update($id)
+    public function update(Request $request, Post $post)
     {
-        //
+        // update post
+        $post->user_id = \Auth::user()->id;
+        $post->slug = $request->get('title');
+        $post->html = $request->get('markdown');
+        $post->fill($request->all());
+        $post->featured = $request->has('featured') ? 1 : 0;
+        $post->save();
+        return redirect()->to('admin');
     }
 
     /**
@@ -58,8 +79,9 @@ class PostsController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function destroy($id)
+    public function destroy(Post $post)
     {
-        //
+        $post->delete();
+        return redirect()->to('admin');
     }
 }

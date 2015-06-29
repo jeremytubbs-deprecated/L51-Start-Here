@@ -8,9 +8,8 @@ use Carbon\Carbon;
 
 class Post extends Model
 {
-
     protected $table = 'posts';
-    protected $fillable = ['category_id', 'cover_id', 'title', 'summary', 'markdown', 'featured', 'published', 'published_at'];
+    protected $guarded = ['user_id'];
     protected $dates = ['published_at'];
 
     public function category()
