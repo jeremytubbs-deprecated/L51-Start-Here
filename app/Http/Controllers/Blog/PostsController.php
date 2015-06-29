@@ -24,9 +24,9 @@ class PostsController extends Controller
      *
      * @return Response
      */
-    public function getPostsByYear()
+    public function getPostsByYear($year)
     {
-        //
+        dd("year");
     }
 
     /**
@@ -34,9 +34,9 @@ class PostsController extends Controller
      *
      * @return Response
      */
-    public function getPostsByMonth()
+    public function getPostsByMonth($year, $month)
     {
-        //
+        dd($year . ' ' . $month);
     }
 
     /**
@@ -46,7 +46,7 @@ class PostsController extends Controller
      */
     public function showPost($slug)
     {
-        //
+        dd("post");
     }
 
 }

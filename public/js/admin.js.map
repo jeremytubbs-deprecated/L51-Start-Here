@@ -1,1 +1,1 @@
-{"version":3,"sources":["main.js"],"names":[],"mappings":"AAAA","file":"admin.js","sourcesContent":[""],"sourceRoot":"/source/"}
+{"version":3,"sources":["main.js"],"names":[],"mappings":"AAAA;AACA","file":"admin.js","sourcesContent":["mirrormark1 = mirrorMark(document.getElementById(\"mirrormark1\"), { showToolbar: true });\nmirrormark1.render();"],"sourceRoot":"/source/"}

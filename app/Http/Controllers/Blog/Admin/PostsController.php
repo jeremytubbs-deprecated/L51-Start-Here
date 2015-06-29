@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Admin\Blog;
+namespace App\Http\Controllers\Blog\Admin;
 
 use Illuminate\Http\Request;
 
@@ -17,7 +17,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        return view('admin.blog.create');
+        return view('blog.admin.create');
     }
 
     /**

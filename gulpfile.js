@@ -31,6 +31,8 @@ elixir(function(mix) {
         "vendor/admin/codemirror/codemirror.js",
         "vendor/admin/codemirror/addon/continuelist.js",
         "vendor/admin/codemirror/mode/markdown.js",
+        "vendor/admin/lodash.js",
+        "vendor/admin/mirrormark.js",
         "vendor/admin/marked.js"
     ], "public/js/vendor/admin.js");
 });

@@ -33,7 +33,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function(
 {
     Route::get('/', ['as' => 'admin.dashboard', 'uses' => 'Admin\DashboardController@getDashboard']);
     // blog crud
-    Route::resource(config('blog.base_uri'), 'Admin\Blog\PostsController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
+    Route::resource(config('blog.base_uri'), 'Blog\Admin\PostsController', ['only' => ['create', 'store', 'edit', 'update', 'destroy']]);
 });
 
 // blog pages

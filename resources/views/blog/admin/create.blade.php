@@ -2,8 +2,9 @@
 
 @section('content')
 <main class="container">
-	<form>
-		@include('admin.blog.partials.form')
+	<form method="POST" action="/admin/posts">
+	{!! csrf_field() !!}
+		@include('blog.admin.partials.form')
 	</form>
 </main>
 @endsection

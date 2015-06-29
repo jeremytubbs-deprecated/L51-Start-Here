@@ -3,7 +3,7 @@
 @section('content')
 <main class="container">
 	<form>
-		@include('admin.blog.partials.form')
+		@include('blog.admin.partials.form')
 	</form>
 </main>
 @endsection
