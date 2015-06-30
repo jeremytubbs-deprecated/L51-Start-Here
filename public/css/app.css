@@ -729,6 +729,24 @@ picture {
     .flash-warning a:hover {
       color: #04080e; }
 
+.custom-select select {
+  border-radius: 0;
+  font-size: 1em;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  padding: 0.5em;
+  width: 100%;
+  outline: none; }
+  @media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .custom-select select {
+      background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjxzdmcgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDQ4IDQ4IiB3aWR0aD0iNDgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTE0LjgzIDE2LjQybDkuMTcgOS4xNyA5LjE3LTkuMTcgMi44MyAyLjgzLTEyIDEyLTEyLTEyeiIvPjxwYXRoIGQ9Ik0wLS43NWg0OHY0OGgtNDh6IiBmaWxsPSJub25lIi8+PC9zdmc+);
+      background-position: right 0 top 50%;
+      background-repeat: no-repeat; } }
+
 .container {
   max-width: 68em;
   margin-left: auto;
